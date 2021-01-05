@@ -12,7 +12,9 @@ function AddTask(){
                     value ={description}
                     onChange = {(e)=>setDescription(e.target.value)}/>
             <button className="btn btn-info mx-2"
-                    onClick ={()=>{ dispatch(addTodo(
+                    onClick ={()=>{
+                    if(description ){
+                     dispatch(addTodo(
                        {
                            id:nextId+=1,
                            description : description,
@@ -20,6 +22,11 @@ function AddTask(){
                        })
                     )
                     setDescription('')
+                    }
+                    else
+                    {
+                        alert("empty string !")
+                    }
                     }}>Add</button>
            
         </div>

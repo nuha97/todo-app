@@ -1,26 +1,26 @@
 const todos = [
     {
-        id:1,
+        id:Math.random(),
         description:"First task in todo list",
         isDone : true
     },
     {
-        id:2,
+        id:Math.random(),
         description:"Second task in todo list",
         isDone : true
     },
     {
-        id:3,
+        id:Math.random(),
         description:"Third task in todo list",
         isDone : false
     },
     {
-        id:4,
+        id:Math.random(),
         description:"Forth task in todo list",
         isDone : false
     },
     {
-        id:5,
+        id:Math.random(),
         description:"Fifth task in todo list",
         isDone : true
     }

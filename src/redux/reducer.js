@@ -10,14 +10,23 @@ let reducer = (state = tasks, action) => {
             }
         case "UPDATE_TODO" :
             {
-                return state.map(task =>
-                    (task.id === action.id) 
-                      ? {...task, isDone: !task.isDone}
-                      : task
-                  )
+                let newTasks = [...state]
+                let index = -1
+                for(let i = 0; i< newTasks.length; i++)
+                {
+                    index++;
+                    if(newTasks[i].id == action.payload.id){
+                        break;
+                    }
+                }
+                if(index != -1)
+            {
+                newTasks[index]=action.payload
+                return newTasks
+            }
                
             }
-           
+            
         case "MARK_AS_DONE_TODO":
             {
             let newTasks = [...state]
@@ -31,29 +40,36 @@ let reducer = (state = tasks, action) => {
                 }
             if(index != -1)
             {
-                newTasks[index].isDone = true
+                newTasks[index].isDone =  !newTasks[index].isDone
                 return newTasks
             }
-           
             }
-            
-
-        case "DISPLAY_ALL_TASKS":
-            return state
+            //return{tasks.map(item=>item.id===action.id ? {...item,isDone: !item.isDone} : item)}
+        case "FILTER_TASKS":
+            {
+                let filterTasks = [...state]
+                switch(action.payload){
+                case "ALL_TASKS":
+                {
+                    return filterTasks
+                }
         
-        case "FILTER_LIST_DONE":
-            {
-            let filterTasksDone = [...state]
-            filterTasksDone = filterTasksDone.filter(task=>task.isDone)
-            return filterTasksDone
+                case "COMPLETED":
+                {
+                    let filterTasks = [...state]
+                    filterTasks = filterTasks.filter(t=>t.isDone)
+                    return filterTasks
+                }
+                case "NOTCOMPLETED":
+                {
+                    let filterTasks = [...state]
+                    filterTasks = filterTasks.filter(t => !t.isDone)
+                    return filterTasks
+                }
+                default:
+                    return state
+                }
             }
-        case "FILTER_LIST_NOTDONE":
-            {
-            let filterTasks = [...state]
-            filterTasks = filterTasks.filter(task=>!task.isDone)
-            return filterTasks
-            }
-
         default:
             return state
     }
@@ -67,21 +83,6 @@ export default reducer
 
 
 
-
-
-  // let newTasks = [...state]
-                // let index = -1
-                // for(let i = 0; i< newTasks.length; i++)
-                // {
-                //     index++;
-                //     if(newTasks[i].id == action.payload.id){
-                //         break;
-                //     }
-                // }
-                // if(index != -1){
-                //     newTasks[index] = action.payload
-                //     return newTasks
-                // }
 
 
 

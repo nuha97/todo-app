@@ -18,27 +18,23 @@ export function markAsDone(todoId)
         payload:todoId
     }
 }
-export function filterTasks(filter){
-    return {
-    type: "FILTER_TASKS",
-    payload:filter
-    }
-}
+
 //--------------------------------------------------------
-export function allTasks(){
+export function allTasks(tasks){
     return {
-        type:"DISPLAY_ALL_TASKS"
+        type:"ALL_TASKS",
+        payload:tasks
     }
 }
 export function filterDone(){
     return {
-        type:"FILTER_LIST_DONE"
+        type:"COMPLETED"
     }
 }
 
 export function filterNotDone(){
     return {
-        type:"FILTER_LIST_NOTDONE"
+        type:"NOTCOMPLETED"
     }
 }
 //------------------------------------------------------
@@ -49,3 +45,9 @@ export function filterNotDone(){
 //     }
 // }
 //-------------------------------------------------------
+export function filterTasks(filter){
+    return {
+    type: "FILTER_TASKS",
+    payload:filter
+    }
+}

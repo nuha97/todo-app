@@ -8,8 +8,8 @@ function ListTask(){
     return (
         <div className="my-4">
         { 
-        tasks.map(task=>{
-             return <Task task={task} key={task.id} />
+        tasks.map((task,index)=>{
+             return <Task task={task} key={index} index={index} />
         }) }
         </div>
     

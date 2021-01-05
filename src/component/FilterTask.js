@@ -1,23 +1,25 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import {allTasks, filterDone,filterNotDone} from '../redux/action'
+import { useDispatch, useSelector } from 'react-redux';
+import {filterTasks} from '../redux/action'
 
-function FilterTask (){
+function FilterTask ({filter}){
     let dispatch = useDispatch()
+    const tasks = useSelector(state => state)
 
+    
     return (
         <div className="row">
             <button className="btn btn-info m-2"
-            onClick={()=>dispatch(allTasks())}
-            >All Tasks</button>
+            onClick={()=>dispatch(filterTasks(filter))}
+            >{filter}</button>
 
-            <button className = "btn btn-info m-2"
+            {/* <button className = "btn btn-info m-2"
             onClick={()=>dispatch(filterDone())}
             >Done </button>
 
             <button className ="btn btn-info m-2"
               onClick={()=>dispatch(filterNotDone())}
-              >Not Yet</button>
+              >Not Yet</button> */}
         </div>
     )
 }

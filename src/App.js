@@ -12,13 +12,16 @@ function App() {
   //const dispatch = useDispatch();
   return (
     <div className="App ">
+       {/* <h2>Todos List </h2> */}
         <h4>Add New Task</h4>
       <AddTask/>
   
-      <h2>Todos List </h2>
+     
       <ListTask />
       <hr/>
-      <FilterTask/>
+      <FilterTask filter="ALL_TASKS"/>
+      <FilterTask filter="COMPLETED"/>
+      <FilterTask filter="NOTCOMPLETED"/>
     </div>
   );
 }
